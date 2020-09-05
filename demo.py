@@ -17,6 +17,7 @@ if __name__ == '__main__':
     image_files = glob('./test_images/*.*')
     result_dir = './test_result'
     for image_file in sorted(image_files):
+        # time.time返回当前时间戳
         t = time.time()
         result, image_framed = single_pic_proc(image_file)
         output_file = os.path.join(result_dir, image_file.split('/')[-1])

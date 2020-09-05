@@ -1,9 +1,5 @@
 #-*- coding:utf-8 -*-
-#'''
-# Created on 18-12-11 上午10:03
-#
-# @Author: Greg Gao(laygin)
-#'''
+
 import os
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 import cv2
@@ -26,6 +22,8 @@ weights = os.path.join(config.checkpoints_dir, 'CTPN.pth')
 model = CTPN_Model()
 model.load_state_dict(torch.load(weights, map_location=device)['model_state_dict'])
 model.to(device)
+# 训练完train_datasets之后，model要来测试样本了。在model(test_datasets)之前，需要加上model.eval().
+# 否则的话，有输入数据，即使不训练，它也会改变权值。这是model中含有batch normalization层所带来的的性质。
 model.eval()
 
 
@@ -41,6 +39,7 @@ def get_det_boxes(image,display = True, expand = True):
     image_c = image.copy()
     h, w = image.shape[:2]
     image = image.astype(np.float32) - config.IMAGE_MEAN
+    #image: (h,w,c) -> (1,c,h,w)
     image = torch.from_numpy(image.transpose(2, 0, 1)).unsqueeze(0).float()
 
     with torch.no_grad():
