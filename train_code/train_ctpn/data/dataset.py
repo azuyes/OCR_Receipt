@@ -11,8 +11,8 @@ import numpy as np
 import cv2
 from torch.utils.data import Dataset
 import torch
-from config import IMAGE_MEAN
-from ctpn_utils import cal_rpn
+from train_code.train_ctpn.config import IMAGE_MEAN
+from train_code.train_ctpn.ctpn_utils import cal_rpn
 
 
 def readxml(path):

@@ -6,9 +6,10 @@ from torch import optim
 import numpy as np
 import argparse
 
-import config
-from ctpn_model import CTPN_Model, RPN_CLS_Loss, RPN_REGR_Loss
-from data.dataset import ICDARDataset
+import train_code.train_ctpn.config
+from train_code.train_ctpn.ctpn_model import CTPN_Model, RPN_CLS_Loss, RPN_REGR_Loss
+from train_code.train_ctpn.data.dataset import ICDARDataset
+import train_code.train_ctpn.config as config
 
 # dataset_download:https://rrc.cvc.uab.es/?ch=8&com=downloads
 random_seed = 2019

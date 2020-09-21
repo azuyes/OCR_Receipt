@@ -11,10 +11,10 @@ import numpy as np
 
 import torch
 import torch.nn.functional as F
-from ctpn_model import CTPN_Model
-from ctpn_utils import gen_anchor, bbox_transfor_inv, clip_box, filter_bbox,nms, TextProposalConnectorOriented
-from ctpn_utils import resize
-import config
+from train_code.train_ctpn.ctpn_model import CTPN_Model
+from train_code.train_ctpn.ctpn_utils import gen_anchor, bbox_transfor_inv, clip_box, filter_bbox,nms, TextProposalConnectorOriented
+from train_code.train_ctpn.ctpn_utils import resize
+import train_code.train_ctpn.config as config
 
 
 prob_thresh = 0.5
